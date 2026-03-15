@@ -50,13 +50,14 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           if [ "${{ inputs.transform_only }}" == "true" ]; then
-            python run_pipeline.py --transform-only
+            python -m src.main --transform-only
           elif [ "${{ inputs.skip_load }}" == "true" ]; then
-            python run_pipeline.py --skip-load
+            python -m src.main --skip-load
           else
-            python run_pipeline.py
+            python -m src.main
           fi
       
       - name: Cleanup secrets
