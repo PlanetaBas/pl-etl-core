@@ -1,10 +1,6 @@
 name: ELT Pipeline
 
 on:
-  # Запуск по расписанию (каждый день в 6:00 UTC = 10:00 MSK)
-  schedule:
-    - cron: '0 6 * * *'
-  
   # Ручной запуск
   workflow_dispatch:
     inputs:
